@@ -1,9 +1,9 @@
 /* Container Hub */
 .ch{--bg:#f4f5f7;--s1:#ffffff;--s2:#f7f8fa;--s3:#eef0f3;--line:#e2e5ea;--line2:#d3d8df;--tx:#1c2026;--mu:#5b6470;--ac:#e8701a;--ac-tx:#a94d08;--ac-bg:#fff1e5;
-  --ok:#1f8f3f;--ok-bg:#e5f5ea;--bad:#cc2f2f;--bad-bg:#fdecec;--bad-line:#f2c4c4;--warn:#9a6300;--warn-bg:#fdf3dc;--info:#1d5fc4;--info-bg:#e7f0fd;--upd:#2563eb;--upd-bg:#e8efff;--upd-tx:#1d4ed8;--off:#8a939e;--track:#e6e9ee;--shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+  --ok:#1f8f3f;--ok-bg:#e5f5ea;--bad:#cc2f2f;--bad-bg:#fdecec;--bad-line:#f2c4c4;--warn:#9a6300;--warn-bg:#fdf3dc;--info:#1d5fc4;--info-bg:#e7f0fd;--upd:#2563eb;--upd-bg:#e8efff;--upd-tx:#1d4ed8;--off:#8a939e;--track:#e6e9ee;--gh:#e3e9f1;--gh-tx:#16202c;--gline:#cfd7e2;--shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
   color:var(--tx);font-size:14px;line-height:1.4;box-sizing:border-box;width:100%;min-height:400px}
 .ch.ch-dark{--bg:#0e1014;--s1:#161a20;--s2:#12151a;--s3:#1d222a;--line:#262c36;--line2:#343b47;--tx:#e6e8eb;--mu:#9aa3ae;--ac:#ff8c2f;--ac-tx:#ffb27a;--ac-bg:#2a1c10;
-  --ok:#3fb950;--ok-bg:#15291b;--bad:#ff6b5e;--bad-bg:#2b1719;--bad-line:#5a2a2e;--warn:#e3b341;--warn-bg:#2b2410;--info:#8ec0ff;--info-bg:#142238;--upd:#3b82f6;--upd-bg:#14223d;--upd-tx:#9cc2ff;--off:#6b7480;--track:#262c36;--shadow:none}
+  --ok:#3fb950;--ok-bg:#15291b;--bad:#ff6b5e;--bad-bg:#2b1719;--bad-line:#5a2a2e;--warn:#e3b341;--warn-bg:#2b2410;--info:#8ec0ff;--info-bg:#142238;--upd:#3b82f6;--upd-bg:#14223d;--upd-tx:#9cc2ff;--off:#6b7480;--track:#262c36;--gh:#232b36;--gh-tx:#f1f4f8;--gline:#38414e;--shadow:none}
 .ch *{box-sizing:border-box}
 .ch button{font:inherit;color:inherit;margin:0;min-width:0;text-transform:none;letter-spacing:normal;background-image:none;text-shadow:none}
 .ch a{color:var(--ac-tx)}
@@ -228,3 +228,37 @@
 .ch .ch-gtoggle:hover{background:transparent}
 .ch .ch-chip.upd:hover{background:var(--upd);color:#fff}
 .ch .ch-alert,.ch .ch-nitem,.ch .ch-cand,.ch .ch-kpi{background-image:none}
+
+/* groups as separate, clearly framed blocks */
+.ch .ch-tablewrap{background:transparent;border:0;border-radius:0}
+.ch-table{border-collapse:separate;border-spacing:0}
+.ch-table thead th{background:transparent;border-bottom:0;padding-bottom:6px}
+.ch-table tbody.gap td{height:18px;padding:0;border:0;background:transparent}
+.ch-table tbody tr.row td{background:var(--s1);border-top:1px solid var(--line)}
+.ch-table tbody tr.row td:first-child{border-left:1px solid var(--gline)}
+.ch-table tbody tr.row td:last-child{border-right:1px solid var(--gline)}
+.ch-table tbody tr.row:last-child td{border-bottom:1px solid var(--gline)}
+.ch-table tbody tr.row:last-child td:first-child{border-bottom-left-radius:12px}
+.ch-table tbody tr.row:last-child td:last-child{border-bottom-right-radius:12px}
+.ch-table tbody:not(.grp) tr.row:first-child td{border-top:1px solid var(--gline)}
+.ch-table tbody:not(.grp) tr.row:first-child td:first-child{border-top-left-radius:12px}
+.ch-table tbody:not(.grp) tr.row:first-child td:last-child{border-top-right-radius:12px}
+.ch-table tr.row:hover td{background:var(--s2)}
+.ch-table tr.row.sel td{background:var(--ac-bg)}
+.ch-table tr.ghead td{background:var(--gh);color:var(--gh-tx);padding:9px 12px 9px 10px;border:1px solid var(--gline);border-left:4px solid var(--ac);border-radius:12px 12px 0 0}
+.ch-table tbody.grp:first-of-type tr.ghead td{border-top:1px solid var(--gline)}
+.ch-table tbody.grp.closed tr.ghead td{border-radius:12px}
+.ch-ghead{min-height:34px;gap:10px}
+.ch .ch-gtoggle{gap:10px;color:var(--gh-tx)}
+.ch-gtoggle svg{width:16px;height:16px}
+.ch-gtoggle .gname{font-size:16px;font-weight:700;letter-spacing:-.005em}
+.ch-gtoggle .gcount{font-size:12px;font-weight:600;color:var(--mu);background:var(--s1);border-radius:9px;padding:1px 8px}
+.ch-ficon{width:24px;height:24px}
+.ch-table tr.ghead .ch-chip{background:var(--s1)}
+.ch-table tr.ghead .ch-chip.ok{background:var(--ok-bg)}
+.ch-table tr.ghead .ch-chip.bad{background:var(--bad-bg)}
+.ch-table tr.ghead .ch-chip.upd{background:var(--upd-bg)}
+.ch-table tr.ghead .ch-ibtn{color:var(--gh-tx)}
+.ch-table tr.ghead .ch-ibtn:hover{background:var(--s1)}
+.ch-table tr.row.has-upd td.c-chk{box-shadow:inset 3px 0 0 var(--upd)}
+.ch-table tr.row.k-bad td.c-chk{box-shadow:inset 3px 0 0 var(--bad)}

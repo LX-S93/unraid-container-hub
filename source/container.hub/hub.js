@@ -277,6 +277,7 @@
     gs.forEach(function (g) {
       var items = g.items.filter(function (c) { return matches(c) && passFilter(c); }).sort(sorter);
       if (!items.length) return;
+      if (shown && !g.flat) body += '<tbody class="gap" aria-hidden="true"><tr><td colspan="8"></td></tr></tbody>';
       shown += items.length;
       var closed = isCollapsed(g);
       if (!g.flat) {
@@ -286,7 +287,7 @@
         body += '<tbody class="grp' + (closed ? ' closed' : '') + '"><tr class="ghead"><td colspan="8"><div class="ch-ghead">' +
           '<button type="button" class="ch-gtoggle" data-act="toggle" data-g="' + esc(g.key) + '" aria-expanded="' + !closed + '">' + I.chev +
           (g.icon ? '<img class="ch-ficon" src="' + esc(g.icon) + '" alt="" onerror="this.remove()">' : '') +
-          '<span class="gname">' + esc(g.name) + '</span></button>' +
+          '<span class="gname">' + esc(g.name) + '</span><span class="gcount">' + g.items.length + '</span></button>' +
           '<span class="ch-chip' + (run === g.items.length ? ' ok' : '') + '">' + run + ' / ' + g.items.length + ' running</span>' +
           (bad ? '<span class="ch-chip bad">' + bad + ' need attention</span>' : '') +
           (upd ? '<button type="button" class="ch-chip upd" data-act="group-update" data-g="' + esc(g.key) + '" title="Update all ' + upd + ' in this group">' + I.up + ' ' + upd + ' update' + (upd > 1 ? 's' : '') + '</button>' : '') +
