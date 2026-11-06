@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "container.hub">
 <!ENTITY author    "LX-S93">
-<!ENTITY version   "2026.11.06a">
-<!ENTITY md5       "ed11200d8efb3357d12c02854b563b7f">
+<!ENTITY version   "2026.11.06.1">
+<!ENTITY md5       "04db535c410f68798b0ac820397904df">
 <!ENTITY github    "LX-S93/unraid-container-hub">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&github;/main">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
@@ -13,7 +13,7 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Containers">
 
 <CHANGES>
-### 2026.11.06a
+### 2026.11.06.1
 - Generic base images (python, node, alpine …) are never used as a logo match
 - Cleaner logo rows, alerts and network entries; memory bar only where a limit is set
 ### 2026.11.06
