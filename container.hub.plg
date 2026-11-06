@@ -1,0 +1,55 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "container.hub">
+<!ENTITY author    "LX-S93">
+<!ENTITY version   "2026.11.06">
+<!ENTITY md5       "74c4cb3719753db81b19777f761421d7">
+<!ENTITY github    "LX-S93/unraid-container-hub">
+<!ENTITY gitURL    "https://raw.githubusercontent.com/&github;/main">
+<!ENTITY pluginURL "&gitURL;/&name;.plg">
+<!ENTITY pkg       "&name;-&version;-x86_64-1">
+<!ENTITY cfg       "/boot/config/plugins/&name;">
+]>
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Containers">
+
+<CHANGES>
+### 2026.11.06
+- First release: a modern Containers page next to the Docker tab
+- Cards, list and network views, status overview with "needs attention", details panel with logs
+- Uses Unraid's own start/stop, update, console and autostart functions; reads Folder View folders
+- Automatic logos from dashboard-icons and selfh.st, optional write-back into the Unraid templates
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+mkdir -p &cfg;
+find &cfg; -maxdepth 1 -name '&name;-*.txz' ! -name '&pkg;.txz' -delete
+true
+</INLINE>
+</FILE>
+
+<FILE Name="&cfg;/&pkg;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/archive/&pkg;.txz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "----------------------------------------------------"
+echo " &name; &version; installed"
+echo " Open it from the CONTAINERS tab in the top bar"
+echo "----------------------------------------------------"
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+removepkg &pkg; >/dev/null 2>&amp;1
+rm -rf /usr/local/emhttp/plugins/&name; /tmp/&name;
+rm -f &cfg;/&name;-*.txz
+echo "&name; removed. Settings, logos and template backups are kept in &cfg;"
+</INLINE>
+</FILE>
+
+</PLUGIN>

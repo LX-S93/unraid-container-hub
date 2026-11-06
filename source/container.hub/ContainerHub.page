@@ -1,0 +1,15 @@
+Menu="Tasks:59"
+Title="Containers"
+Code="f1b3"
+Cond="is_file('/var/run/dockerd.pid')"
+Markdown="false"
+---
+<?
+$chTheme = $display['theme'] ?? 'white';
+$chDark = in_array($chTheme, ['black', 'gray']);
+?>
+<link rel="stylesheet" href="<?autov('/plugins/container.hub/hub.css')?>">
+<div id="ch" class="ch <?=$chDark ? 'ch-dark' : 'ch-light'?>">
+  <div class="ch-loading">Loading containers …</div>
+</div>
+<script src="<?autov('/plugins/container.hub/hub.js')?>"></script>
