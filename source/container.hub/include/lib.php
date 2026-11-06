@@ -119,7 +119,7 @@ function ch_hub_icon($name, $icons) {
 function ch_state() {
   $DC = new DockerClient();
   $cts = $DC->getDockerContainers();
-  $info = $DC->getAllInfo();
+  $info = (new DockerTemplates())->getAllInfo();
   $ins = ch_inspect();
   $auto = ch_autostart();
   $icons = ch_json_read(CH_CFG . '/icons.json', []);

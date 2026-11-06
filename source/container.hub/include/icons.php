@@ -208,7 +208,7 @@ function ch_icons_scan($list = null, $force = false) {
 // container list without the slower parts, for scans
 function ch_state_light() {
   $DC = new DockerClient();
-  $info = $DC->getAllInfo();
+  $info = (new DockerTemplates())->getAllInfo();
   $ins = ch_inspect();
   $icons = ch_json_read(CH_CFG . '/icons.json', []);
   $r = [];
