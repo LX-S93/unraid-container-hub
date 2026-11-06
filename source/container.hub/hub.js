@@ -156,9 +156,10 @@
         '<a class="ch-btn pri" href="/Docker/AddContainer">+ Add container</a>' +
       '</div>' +
       '<div id="ch-summary"></div>' +
-      '<div class="ch-split" id="ch-split"><div class="ch-main" id="ch-body"></div>' +
-        '<div class="ch-resizer" id="ch-resizer" role="separator" aria-orientation="vertical" aria-label="Resize details panel" tabindex="0"></div>' +
-        '<aside class="ch-panel-side" aria-label="Container details" id="ch-drawer"></aside></div>';
+      '<div id="ch-body"></div>' +
+      '<div class="ch-shade" data-act="close"></div>' +
+      '<div class="ch-resizer" id="ch-resizer" role="separator" aria-orientation="vertical" aria-label="Resize details panel" tabindex="0" title="Drag to resize"></div>' +
+      '<aside class="ch-drawer" aria-label="Container details" id="ch-drawer"></aside>';
     $('#ch-q').val(S.q);
     applyPanelWidth();
   }
@@ -392,7 +393,7 @@
 
   /* ---------- details panel ---------- */
   function applyPanelWidth() {
-    var max = Math.max(360, Math.round(window.innerWidth * 0.75));
+    var max = Math.max(360, window.innerWidth - 80);
     S.panelW = Math.max(320, Math.min(max, S.panelW || 520));
     root.style.setProperty('--panel-w', S.panelW + 'px');
   }

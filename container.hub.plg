@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "container.hub">
 <!ENTITY author    "LX-S93">
-<!ENTITY version   "2026.11.06.3">
-<!ENTITY md5       "9337d032f8fbea4c09b17b7b2d6ee94a">
+<!ENTITY version   "2026.11.06.4">
+<!ENTITY md5       "a2e5321eebf0a3d5e32545c733cfbf8c">
 <!ENTITY github    "LX-S93/unraid-container-hub">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&github;/main">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
@@ -13,6 +13,8 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Containers">
 
 <CHANGES>
+### 2026.11.06.4
+- Details panel slides in over the page again, now resizable by dragging its left edge
 ### 2026.11.06.3
 - Groups stand out: separate framed blocks with a coloured header bar, larger name and container count
 ### 2026.11.06.2
