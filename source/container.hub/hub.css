@@ -217,3 +217,14 @@
   .ch-open .ch-resizer{display:none}
   .ch-open .ch-panel-side{position:fixed;inset:0;width:auto;height:auto;border-radius:0;z-index:9999;top:0}
 }
+/* filter pills and hover resets against Unraid's button styles */
+.ch .ch-pill{height:30px;padding:0 12px;border-radius:15px;border:1px solid var(--line2);background:var(--s1);color:var(--mu);cursor:pointer;font-size:12px;font-weight:500;line-height:1}
+.ch .ch-pill b{color:var(--tx);margin-left:3px}
+.ch .ch-pill:hover{background:var(--s3);color:var(--tx)}
+.ch .ch-pill.on{border-color:var(--ac);background:var(--ac-bg);color:var(--ac-tx);font-weight:600}
+.ch .ch-pill.on b{color:var(--ac-tx)}
+.ch .ch-tab:hover{background:var(--s1);color:var(--tx)}
+.ch .ch-dtab:hover{background:transparent;color:var(--tx)}
+.ch .ch-gtoggle:hover{background:transparent}
+.ch .ch-chip.upd:hover{background:var(--upd);color:#fff}
+.ch .ch-alert,.ch .ch-nitem,.ch .ch-cand,.ch .ch-kpi{background-image:none}

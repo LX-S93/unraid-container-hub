@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "container.hub">
 <!ENTITY author    "LX-S93">
-<!ENTITY version   "2026.11.06.1">
-<!ENTITY md5       "04db535c410f68798b0ac820397904df">
+<!ENTITY version   "2026.11.06.2">
+<!ENTITY md5       "d59a07f48446e7b2e04e1eeb1117f375">
 <!ENTITY github    "LX-S93/unraid-container-hub">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&github;/main">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
@@ -13,6 +13,11 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Containers">
 
 <CHANGES>
+### 2026.11.06.2
+- The list is the main view now, grouped by folder/network/compose with collapsible groups (cards view removed)
+- Updates stand out: blue Update button per container, marker on the icon, "n updates" per group, filter by updates
+- Details panel is docked next to the list instead of covering it, and can be resized by dragging its edge
+- Built-in console tab (docker exec) in the details panel
 ### 2026.11.06.1
 - Generic base images (python, node, alpine …) are never used as a logo match
 - Cleaner logo rows, alerts and network entries; memory bar only where a limit is set
