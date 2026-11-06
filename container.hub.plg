@@ -2,17 +2,20 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "container.hub">
 <!ENTITY author    "LX-S93">
-<!ENTITY version   "2026.11.06.4">
-<!ENTITY md5       "a2e5321eebf0a3d5e32545c733cfbf8c">
+<!ENTITY version   "2026.11.06.5">
+<!ENTITY md5       "11d3aa2a1dda5cdc443bf2b89c91026a">
 <!ENTITY github    "LX-S93/unraid-container-hub">
 <!ENTITY gitURL    "https://raw.githubusercontent.com/&github;/main">
 <!ENTITY pluginURL "&gitURL;/&name;.plg">
 <!ENTITY pkg       "&name;-&version;-x86_64-1">
 <!ENTITY cfg       "/boot/config/plugins/&name;">
 ]>
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Containers">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" support="https://github.com/&github;/issues" project="https://github.com/&github;" min="7.0.0" icon="cubes" launch="Docker">
 
 <CHANGES>
+### 2026.11.06.5
+- Container Hub now lives inside the Docker tab instead of its own CONTAINERS tab
+- The classic container list stays one click away ("Classic view" / "Container Hub" in the title bar)
 ### 2026.11.06.4
 - Details panel slides in over the page again, now resizable by dragging its left edge
 ### 2026.11.06.3
@@ -50,7 +53,7 @@ true
 echo ""
 echo "----------------------------------------------------"
 echo " &name; &version; installed"
-echo " Open it from the CONTAINERS tab in the top bar"
+echo " Open the DOCKER tab in the top bar"
 echo "----------------------------------------------------"
 </INLINE>
 </FILE>

@@ -685,6 +685,55 @@
     var a = document.activeElement;
     return $('#ch-q').is(':focus') || (a && a.tagName === 'SELECT') || root.classList.contains('ch-resizing');
   }
+  /* ---------- inside the Docker tab: Container Hub replaces the classic list ---------- */
+  // Unraid stacks all pages of the Docker menu in one .content box (or shows them as
+  // tabs). Container Hub sits first; the classic "Docker Containers" section stays in the
+  // page (Folder View and Unraid's own scripts keep working) and can be switched back to.
+  function embedInDockerTab() {
+    var content = root.parentNode;
+    if (!content || !/^\/Docker\/?$/.test(location.pathname)) return;
+    var table = document.getElementById('docker_containers');
+    if (!table) return;
+    var top = table;
+    while (top.parentNode && top.parentNode !== content) top = top.parentNode;
+    if (top.parentNode !== content) return; // tabbed view: the classic list has its own tab
+    var kids = Array.prototype.slice.call(content.children);
+    var isTitle = function (el) { return el.classList && el.classList.contains('title'); };
+    var at = kids.indexOf(top), start = at;
+    while (start > 0 && !isTitle(kids[start])) start--;
+    if (!isTitle(kids[start])) return;
+    var classic = [];
+    for (var i = start; i < kids.length && (i === start || !isTitle(kids[i])); i++) classic.push(kids[i]);
+    var ownTitle = null;
+    for (var j = kids.indexOf(root) - 1; j >= 0; j--) { if (isTitle(kids[j])) { ownTitle = kids[j]; break; } }
+    var hub = ownTitle ? [ownTitle, root] : [root];
+
+    function slot(title) { return title && (title.querySelector('.right') || title); }
+    function addSwitch(title, label, toClassic) {
+      var s = slot(title);
+      if (!s || s.querySelector('.ch-switch')) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ch-switch';
+      b.textContent = label;
+      b.addEventListener('click', function () { show(toClassic); });
+      s.appendChild(b);
+    }
+    function show(classicView, initial) {
+      if (!initial) store.set('classic', classicView);
+      classic.forEach(function (el) { el.style.display = classicView ? '' : 'none'; });
+      hub.forEach(function (el) { el.style.display = classicView ? 'none' : ''; });
+      // the classic table sizes its columns when it becomes visible
+      if (classicView) $(window).trigger('resize');
+      else if (!initial) load();
+    }
+    addSwitch(ownTitle, 'Classic view', true);
+    addSwitch(classic[0], 'Container Hub', false);
+    show(store.get('classic', false), true);
+  }
+
+  // the classic section comes after this page in the document, so wait until it is parsed
+  $(embedInDockerTab);
   renderShell();
   load();
   loadStats();

@@ -1,6 +1,6 @@
 # Container Hub for Unraid
 
-A modern **Containers** page for Unraid 7 – next to the classic Docker tab, not instead of it.
+A modern container view for Unraid 7 that replaces the list in the **Docker** tab – with the classic list one click away.
 
 ## Features
 
@@ -25,7 +25,7 @@ Unraid 7.0 or newer. **Plugins › Install Plugin**:
 https://raw.githubusercontent.com/LX-S93/unraid-container-hub/main/container.hub.plg
 ```
 
-Open it from the **CONTAINERS** tab in the top bar.
+Open the **DOCKER** tab. *Classic view* in the title bar switches to Unraid's original list (Folder View keeps working there); *Container Hub* switches back. With tabbed page view enabled in Display Settings, both appear as tabs.
 
 ## Data
 
