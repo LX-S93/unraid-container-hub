@@ -203,7 +203,8 @@
   function tile(c) {
     var st = status(c), m = memOf(c), ip = primaryIp(c), sub = st.t;
     if (st.k === 'ok') sub = (since(c.started) ? 'up ' + since(c.started) : 'running') + (ip ? ' · ' + ip : '');
-    var bar = m ? '<div class="mb" title="' + esc(fmtMb(m.used) + (m.lim ? ' of ' + fmtMb(m.lim) : '')) + '"><i class="' + (m.pct > 85 ? 'hi' : '') + '" style="width:' + (m.pct != null ? m.pct : Math.min(100, m.used / Math.max(1, S.data.host_mem_mb) * 100 * 4)) + '%"></i></div>' : '';
+    // memory bar only where a limit is set – usage against nothing says little
+    var bar = m && m.lim ? '<div class="mb" title="' + esc('Memory ' + fmtMb(m.used) + ' of ' + fmtMb(m.lim)) + '"><i class="' + (m.pct > 85 ? 'hi' : '') + '" style="width:' + m.pct + '%"></i></div>' : '';
     return '<button type="button" class="ch-tile k-' + st.k + (S.sel === c.name ? ' sel' : '') + '" data-act="open" data-n="' + esc(c.name) + '">' +
       avatar(c, 40, st.k) + '<span class="tx"><span class="nm" title="' + esc(c.name) + '">' + esc(c.name) + '</span><span class="ch-st" style="display:block">' + esc(sub) + '</span>' + bar + '</span>' +
       (c.update ? '<span class="ch-upd" title="Update available">' + I.up + '</span>' : '') + '</button>';

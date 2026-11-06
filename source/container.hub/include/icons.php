@@ -62,7 +62,11 @@ function ch_icon_keys($c) {
   $nclean = preg_replace(['/^binhex-/', '/^official-/', '/-(official|container|docker)$/', '/-\d+$/'], '', $name);
   $keys = [];
   $add = function ($k, $s) use (&$keys) { $k = ch_norm($k); if (strlen($k) >= 2 && (!isset($keys[$k]) || $keys[$k] < $s)) $keys[$k] = $s; };
-  if (!in_array($last, $genericLast)) { $add($last, 97); $add($clean, 96); }
+  // generic base images (python:3.12, node, alpine …) say nothing about the app itself
+  static $baseImages = ['python', 'node', 'alpine', 'ubuntu', 'debian', 'busybox', 'golang', 'openjdk', 'eclipse-temurin', 'php', 'ruby',
+    'centos', 'fedora', 'archlinux', 'rockylinux', 'almalinux', 'amazonlinux', 'bash', 'perl', 'rust', 'dotnet', 'distroless', 'oraclelinux', 'bun', 'deno'];
+  if (in_array($last, $baseImages)) $add($last, 60);
+  elseif (!in_array($last, $genericLast)) { $add($last, 97); $add($clean, 96); }
   if ($owner && !in_array($owner, $skipOwner)) $add($owner, in_array($last, $genericLast) ? 95 : 86);
   $add($nclean, 93);
   $add($name, 92);
